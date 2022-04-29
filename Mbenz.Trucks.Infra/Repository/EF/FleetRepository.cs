@@ -5,30 +5,30 @@ using System.Collections.Generic;
 
 namespace Mbenz.Trucks.Infra.EF
 {
-    public class FleetRepository : IVenicleRepository
+    public class FleetRepository : IVehicleRepository
     {
         private readonly FleetContext dbContext;
 
         public FleetRepository(FleetContext dbContext) => this.dbContext = dbContext;
-        public void Add(Venicle venicle)
+        public void Add(Vehicle vehicle)
         {
-            dbContext.Venicles.Add(venicle);
+            dbContext.Vehicles.Add(vehicle);
             dbContext.SaveChanges();
         }
 
-        public void Delete(Venicle venicle)
+        public void Delete(Vehicle vehicle)
         {
-            dbContext.Venicles.Remove(venicle);
+            dbContext.Vehicles.Remove(vehicle);
             dbContext.SaveChanges();
         }
 
-        public IEnumerable<Venicle> GetAll() => dbContext.Venicles.ToListAsync().Result;
+        public IEnumerable<Vehicle> GetAll() => dbContext.Vehicles.ToListAsync().Result;
 
-        public Venicle GetById(Guid Id) => dbContext.Venicles.SingleOrDefaultAsync().Result;
+        public Vehicle GetById(Guid Id) => dbContext.Vehicles.SingleOrDefaultAsync().Result;
 
-        public void Update(Venicle venicle)
+        public void Update(Vehicle vehicle)
         {
-            dbContext.Entry(venicle).State = EntityState.Modified;
+            dbContext.Entry(vehicle).State = EntityState.Modified;
             dbContext.SaveChanges();
         }
     }
