@@ -5,3 +5,4 @@ Daily learning
 Practical example Design Patterns in C#
 
 [LICENSE](./LICENSE)
+.
